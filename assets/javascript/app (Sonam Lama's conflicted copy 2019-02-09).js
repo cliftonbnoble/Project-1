@@ -1,9 +1,6 @@
 $(document).ready(function(){ 
 let candImages = ["assets/images/cory-booker.jpg", "assets/images/Kamala-Harris.jpg", "assets/images/Elizabeth-Warren.jpg", "assets/images/John-Delaney.jpg", "assets/images/Julián-Castro's.jpg", "assets/images/Kirsten-Gillibrand.jpg", "assets/images/Pete-Buttigieg.jpg", "assets/images/Tulsi-Gabbard.jpg" ]
-// let candImages = {
-//   "CoryBooker": "assets/images/cory-booker.jpg",
-//   "KamalaHarris": "assets/images/Kamala-Harris.jpg"
-// }
+
 
   function renderCandidateInfo(){
     $(".moreInfo").on("click", function(){
@@ -89,10 +86,10 @@ let candImages = ["assets/images/cory-booker.jpg", "assets/images/Kamala-Harris.
 $(".moreInfo").on("click", function () {
 console.log("data-name");
 console.log("THIS: ", this);
-var candImg = $(this).attr("data-name3");
+var candPic = $(this).attr("data-name3");
     let newImage = $('<img>');
-    // let image = candImages[1];
-    newImage.attr('src', candImg);
+    let image = candImages[1];
+    newImage.attr('src', candPic);
     // newImage.addClass("float-center");
     newImage.addClass("thumbnail");
     $('.prez-area').append(newImage);

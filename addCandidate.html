@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign-Up Today!</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <!-- LINK TO FIREBASE GOES HERE -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Jumbotron -->
+      <div class="jumbotron"><h1 class="text-center">Add a Candidate</h1></div>
+
+      <div class="row">
+        <!-- Sign-Up Card-->
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">Add Candidate</div>
+
+            <div class="card-body">
+              <!-- Sign-up Form (note the various input "types")-->
+              <form role="form">
+                <div class="form-group row">
+                  <label for="fname-input">First Name:</label>
+                  <input class="form-control" id="fname-input" type="text" />
+                </div>
+                <div class="form-group row">
+                  <label for="lname-input">Last Name</label>
+                  <input class="form-control" id="lname-input" type="text" />
+                </div>
+                <div class="form-group row">
+                  <label for="cid-input">cid</label>
+                  <input class="form-control" id="cid-input" type="text" />
+                </div>
+                <div class="form-group row">
+                  <label for="bio-input">bio</label>
+                  <textarea class="form-control" id="bio-input" rows="5"></textarea>
+                </div>
+                <button class="btn btn-primary" id="add-user" type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Script -->
+    <script>
+      // ========================================== START CODING BELOW!!
+
+      // Initialize Firebase
+        // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDKMEPrgX65DV8SM-AHeOB2mgVAF0XewPE",
+    authDomain: "whosrunning-88d3e.firebaseapp.com",
+    databaseURL: "https://whosrunning-88d3e.firebaseio.com",
+    projectId: "whosrunning-88d3e",
+    storageBucket: "whosrunning-88d3e.appspot.com",
+    messagingSenderId: "541971799460"
+  };
+
+      firebase.initializeApp(config);
+
+      var dataRef = firebase.database();
+
+      // Initial Values
+      var fname = "";
+      var lname = "";
+      var cid = "";
+      var bio = "";
+
+      // Capture Button Click
+      $("#add-user").on("click", function(event) {
+        event.preventDefault();
+
+        // YOUR TASK!!!
+        // Code in the logic for storing and retrieving the most recent user.
+        // Don't forget to provide initial data to your Firebase database.
+        fname = $("#fname-input")
+          .val()
+          .trim();
+        lname = $("#lname-input")
+          .val()
+          .trim();
+        cid = $("#cid-input")
+          .val()
+          .trim();
+        bio = $("#bio-input")
+          .val()
+          .trim();
+
+        // Code for the push
+        dataRef.ref().push({
+          fname: fname,
+          lname: lname,
+          cid: cid,
+          bio: bio,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+      });
+    </script>
+  </body>
+</html>
