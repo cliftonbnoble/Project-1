@@ -8,6 +8,7 @@ let candImages = ["assets/images/cory-booker.jpg", "assets/images/Kamala-Harris.
   function renderCandidateInfo(){
     $(".moreInfo").on("click", function(){
       $(".prez-area").empty();
+      $(".prez-area2").empty();
       // $(".bio-area").empty();
       // $(".twitter-area").empty();
     var candidate = $(this).attr("data-name");
@@ -74,7 +75,8 @@ let candImages = ["assets/images/cory-booker.jpg", "assets/images/Kamala-Harris.
       let debt = resp.response.summary["@attributes"].debt;
       let spent = resp.response.summary["@attributes"].spent;
       console.log("cash on hand ", cash_on_hand);
-      let candInfo = $(".prez-area");
+      let candInfo = $('.prez-area2');
+      candInfo.addClass("h2");
       candInfo.append("Debt: $" + debt); 
       candInfo.append("<div>");
       candInfo.append("Spent: $" + spent); 
